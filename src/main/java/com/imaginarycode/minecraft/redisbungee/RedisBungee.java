@@ -12,6 +12,7 @@ import com.imaginarycode.minecraft.redisbungee.util.uuid.UUIDFetcher;
 import com.imaginarycode.minecraft.redisbungee.util.uuid.UUIDTranslator;
 import com.squareup.okhttp.Dispatcher;
 import com.squareup.okhttp.OkHttpClient;
+import de.dytanic.cloudnet.wrapper.Wrapper;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -415,7 +416,7 @@ public final class RedisBungee extends Plugin {
         final String redisServer = configuration.getString("redis-server", "localhost");
         final int redisPort = configuration.getInt("redis-port", 6379);
         String redisPassword = configuration.getString("redis-password");
-        String serverId = configuration.getString("server-id");
+        String serverId = Wrapper.getInstance().getServiceId().getName();
 
         if (redisPassword != null && (redisPassword.isEmpty() || redisPassword.equals("none"))) {
             redisPassword = null;

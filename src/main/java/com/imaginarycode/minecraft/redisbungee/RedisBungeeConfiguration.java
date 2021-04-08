@@ -2,6 +2,7 @@ package com.imaginarycode.minecraft.redisbungee;
 
 import com.google.common.collect.ImmutableList;
 import com.google.common.net.InetAddresses;
+import de.dytanic.cloudnet.wrapper.Wrapper;
 import lombok.Getter;
 import net.md_5.bungee.config.Configuration;
 import redis.clients.jedis.JedisPool;
@@ -21,7 +22,7 @@ public class RedisBungeeConfiguration {
 
     public RedisBungeeConfiguration(JedisPool pool, Configuration configuration) {
         this.pool = pool;
-        this.serverId = configuration.getString("server-id");
+        this.serverId = Wrapper.getInstance().getServiceId().getName();
         this.registerBungeeCommands = configuration.getBoolean("register-bungee-commands", true);
 
         List<String> stringified = configuration.getStringList("exempt-ip-addresses");
